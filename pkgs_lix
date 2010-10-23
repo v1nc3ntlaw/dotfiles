@@ -1,0 +1,64 @@
+Useful appz
+    Image Graphic
+        comix
+        gimp
+        qiv
+        gqview
+
+    Internet Network
+        firefox
+        google chrome
+        opera
+        pcmanx
+        pidgin
+        wondershaper    // limiting network traffic
+        vnstat          // network traffic monitor
+        iftop
+        iptraf
+
+    Musix Player
+        gmpc
+        moc
+        mp3blaster
+        mpd
+
+    MoVie Video Media
+        gnome-mplayer
+        mplayer
+
+    Bittorrent Client
+        deluge
+        transmission
+
+    Office
+        abiword
+        chmsee
+        OpenOffice
+        Rainlendar2
+        stardict
+        vim
+
+    File Broswer
+        nautilus
+        gigolo
+
+    System
+        htop
+        screen
+        byobu
+        lshw
+        hwinfo
+        sysstat
+        iotop
+        latencytop
+
+    Other
+        dropbox
+        gcin
+        git
+        gnome-globalmenu
+        yakuake
+
+Gnome Config
+    Set desktop and some directory path
+    ~/.config/user-dirs.dirs

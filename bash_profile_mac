@@ -1,0 +1,9 @@
+# include bash_aliases
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
+# aliases
+alias fgrep='find .|xargs grep'
+
+export PATH=/Users/techbang/scripts:/usr/local/Cellar/ruby-enterprise-edition/2010.02/bin:/usr/local/sbin:$PATH
