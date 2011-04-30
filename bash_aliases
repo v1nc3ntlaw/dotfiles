@@ -2,34 +2,41 @@
 alias ga='git add'
 alias gb='git branch'
 alias gc='git checkout'
+alias gcp='git cherry-pick'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gl='git log'
 alias glo='git log --pretty=oneline'
 alias glp='git log -p'
 alias gls='git log --stat'
-alias glg='git log --graph --oneline --all'
+alias glg='git log --pretty=oneline --abbrev-commit --graph --decorate --all'
 alias gm='git commit'
 alias gmf='git commit --amend'
 alias gmr='git commit -C HEAD -a --amend'
 alias gpl='git pull'
 alias gps='git push'
+alias gr='git rebase'
 alias grf='git reset HEAD'
 alias grc='git reset HEAD^'
 alias grs='git reset --soft HEAD^'
 alias grh='git reset --hard HEAD^'
 alias gs='git status'
+alias gst='git stash'
 
-# ls aliases
+# cmd aliases
 if [ $OSTYPE = 'darwin10.0' ]; then
   alias ls='ls -G'
+  alias dp1='du -h -d 1'
 else
   alias ls='ls --color=auto'
+  alias dp1='du -h --max-depth=1'
 fi
 alias ll='ls -l'
 alias lla='ls -lFa'
 alias la='ls -A'
 alias l='ls -CF'
+alias clr='clear'
+alias fxg='find .|xargs grep'
 
 # Setup Amazon EC2 Command-Line Tools
 if [ -d ~/.ec2 ]; then
@@ -49,6 +56,13 @@ fi
 function git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
+# use mac TextEdit from command line
+if [ $OSTYPE = 'darwin10.0' ]; then
+  function edit() {
+    /Applications/TextEdit.app/Contents/MacOS/TextEdit $@ 2>/dev/null
+  }
+fi
 
 # colorful bash prompt
 PS1='\[\033[1;33m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[1;31m\]\w\[\033[1;36m\]$(git_branch)\$ \[\033[0m\]'
