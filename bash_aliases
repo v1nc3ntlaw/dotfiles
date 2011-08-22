@@ -13,8 +13,12 @@ setup-nginx-aliases() {
 }
 
 # Displaying GIT Branch Name in Console
-showup-git-branch() {
+git-branch-console() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+git-clear-local-remote-branch() {
+  for lrb in $(git branch -r); do git branch -r -d $lrb > /dev/null 2>&1; done
 }
 
 # git aliases
@@ -24,13 +28,15 @@ alias gc='git checkout'
 alias gcp='git cherry-pick'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gig='git grep'
 alias gl='git log'
 alias glr='git shortlog -n -s --no-merges'
-alias glo='git log --pretty=oneline'
+alias glo='git log --date=short --pretty=format:"%C(yellow)%h %cd %Cgreen(%Cblue%an%Cgreen) %Creset%s %Cred%ar"'
 alias glp='git log -p'
 alias gls='git log --stat'
 alias glg='git log --pretty=oneline --abbrev-commit --graph --decorate --all'
 alias gm='git commit'
+alias gme='git merge'
 alias gmf='git commit --amend'
 alias gmr='git commit -C HEAD -a --amend'
 alias gpl='git pull'
@@ -43,11 +49,18 @@ alias grh='git reset --hard HEAD^'
 alias gs='git status'
 alias gst='git stash'
 
+# rails aliases
+alias rake='bundle exec rake'
+alias bexec='bundle exec'
+alias dp='bundle exec cap production deploy'
+alias ds='bundle exec cap staging deploy'
+
 # cmd aliases
 if [ $OSTYPE = 'darwin10.0' ]; then
   alias ls='ls -G'
   alias dp1='du -h -d 1'
   alias nginx-restart="kill \`cat /usr/local/var/run/nginx.pid\`"
+  export BUNDLER_EDITOR=vico
 else
   alias ls='ls --color=auto'
   alias dp1='du -h --max-depth=1'
@@ -83,4 +96,4 @@ if [ -d ~/.ec2 ]; then
 fi
 
 # colorful bash prompt
-PS1='\[\033[1;33m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[1;31m\]\w\[\033[1;36m\]$(showup-git-branch)\$ \[\033[0m\]'
+PS1='\[\033[1;33m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[1;31m\]\w\[\033[1;36m\]$(git-branch-console)\$ \[\033[0m\]'
