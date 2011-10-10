@@ -17,8 +17,8 @@ git-branch-console() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-git-clear-local-remote-branch() {
-  for lrb in $(git branch -r); do git branch -r -d $lrb > /dev/null 2>&1; done
+git-reset-local-remote-branch() {
+  for lrb in $(git branch -r); do git branch -r -d $lrb > /dev/null 2>&1; done; git fetch
 }
 
 # git aliases
@@ -46,7 +46,7 @@ alias grf='git reset HEAD'
 alias grc='git reset HEAD^'
 alias grs='git reset --soft HEAD^'
 alias grh='git reset --hard HEAD^'
-alias gs='git status'
+alias gs='git status -sb'
 alias gst='git stash'
 
 # rails aliases
