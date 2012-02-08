@@ -103,5 +103,8 @@ if [ -d ~/.ec2 ]; then
   fi
 fi
 
+# ssh autocomplete hostname from bash histroy
+complete -W "$(echo $(grep '^ssh ' ~/.bash_history | sort -u | sed 's/^ssh //'))" ssh
+
 # colorful bash prompt
 PS1='\[\033[1;33m\]\u\[\033[1;37m\]@\[\033[1;32m\]\h\[\033[1;37m\]:\[\033[1;31m\]\w\[\033[1;36m\]$(git-branch-console)\$ \[\033[0m\]'
