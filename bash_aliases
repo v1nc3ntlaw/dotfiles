@@ -24,6 +24,7 @@ git-reset-local-remote-branch() {
 # git aliases
 alias ga='git add'
 alias gb='git branch'
+alias gbr='git branch -r'
 alias gc='git checkout'
 alias gcp='git cherry-pick'
 alias gd='git diff'
@@ -31,7 +32,7 @@ alias gdc='git diff --cached'
 alias gig='git grep'
 alias gl='git log'
 alias glr='git shortlog -n -s --no-merges'
-alias glo='git log --date=short --pretty=format:"%C(yellow)%h %cd %Cgreen(%Cblue%an%Cgreen) %Creset%s %Cred%ar"'
+alias glo='git log --date=short --pretty=format:"%C(magenta)%h %C(yellow)%cd %Cgreen(%Cblue%an%Cgreen) %Creset%s %Cred%ar"'
 alias glp='git log -p'
 alias gls='git log --stat'
 alias glg='git log --pretty=oneline --abbrev-commit --graph --decorate --all'
@@ -48,6 +49,7 @@ alias grs='git reset --soft HEAD^'
 alias grh='git reset --hard HEAD^'
 alias gs='git status -sb'
 alias gst='git stash'
+alias gsp='git smart-pull'
 
 # rails aliases
 alias rake='bundle exec rake'
@@ -56,17 +58,6 @@ alias dp='bundle exec cap production deploy'
 alias ds='bundle exec cap staging deploy'
 
 # cmd aliases
-if [ $OSTYPE = 'darwin10.0' ]; then
-  alias ls='ls -G'
-  alias dp1='du -h -d 1'
-  alias nginx-restart="kill \`cat /usr/local/var/run/nginx.pid\`"
-  export BUNDLER_EDITOR=vico
-else
-  alias ls='ls --color=auto'
-  alias dp1='du -h --max-depth=1'
-  alias open='nautilus'
-  setup-nginx-aliases
-fi
 alias ll='ls -l'
 alias lla='ls -lFa'
 alias la='ls -A'
@@ -74,11 +65,28 @@ alias l='ls -CF'
 alias clr='clear'
 alias fxg='find .|xargs grep'
 
-# use mac TextEdit from command line
+export EDITOR=vim
+
 if [ $OSTYPE = 'darwin10.0' ]; then
+  alias ls='ls -G'
+  alias dp1='du -h -d 1'
+  alias nginx-restart="kill \`cat /usr/local/var/run/nginx.pid\`"
+  alias emacs="/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs -nw"
+  export BUNDLER_EDITOR=subl
+
   edit() {
     /Applications/TextEdit.app/Contents/MacOS/TextEdit $@ 2>/dev/null
   }
+
+  if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+  fi
+else
+  alias ls='ls --color=auto'
+  alias dp1='du -h --max-depth=1'
+  alias open='nautilus'
+  setup-nginx-aliases
+  fortune -a | fmt -80 -s | cowsay -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n
 fi
 
 # Setup Amazon EC2 Command-Line Tools
