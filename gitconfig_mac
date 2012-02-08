@@ -1,8 +1,11 @@
 [user]
 	name = v1nc3ntlaw
-	email = v1nc3ntlaw@techbang.com.tw
+	email = v1nc3ntlaw@gmail.com
 [color]
 	log = auto
 	diff = auto
 	status = auto
 	branch = auto
+	ui = always
+[push]
+	default = tracking
