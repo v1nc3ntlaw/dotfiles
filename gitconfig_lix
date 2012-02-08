@@ -6,3 +6,10 @@
   diff = auto
   status = auto
   branch = auto
+  ui = always
+[push]
+	default = tracking
+[web]
+	browser = chrome
+[browser "chrome"]
+	path = /opt/google/chrome/chrome
