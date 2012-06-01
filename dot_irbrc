@@ -8,7 +8,7 @@ require 'irb/completion'
 require 'irb/ext/save-history'
 
 IRB.conf[:SAVE_HISTORY] = 100
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history" 
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 
 # Just for Rails...
@@ -19,7 +19,7 @@ if rails_env = ENV['RAILS_ENV']
     :PROMPT_I => "#{rails_root}> ",
     :PROMPT_S => "#{rails_root}* ",
     :PROMPT_C => "#{rails_root}? ",
-    :RETURN   => "=> %s\n" 
+    :RETURN   => "=> %s\n"
   }
   IRB.conf[:PROMPT_MODE] = :RAILS
 
@@ -40,7 +40,7 @@ end
 
 begin
   # load wirble
-	require 'rubygems'
+  require 'rubygems'
   require 'wirble'
 
   # start wirble (with color)
@@ -51,11 +51,11 @@ rescue LoadError => err
 end
 
 begin
-	# load Hirb
-	require 'hirb'
-	Hirb.enable
+  # load Hirb
+  require 'hirb'
+  Hirb.enable
 rescue LoadError => err
-	warn "Couldn't load Hirb: #{err}"
+  warn "Couldn't load Hirb: #{err}"
 end
 
 begin
