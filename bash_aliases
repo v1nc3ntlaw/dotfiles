@@ -90,18 +90,18 @@ else
 fi
 
 # Setup Amazon EC2 Command-Line Tools
-if [ -d ~/.ec2 ]; then
-  export EC2_HOME=~/.ec2
-  export EC2_URL=https://ap-southeast-1.ec2.amazonaws.com
-  export PATH=$PATH:$EC2_HOME/bin
-  export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
-  export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
-  if [ $OSTYPE = 'darwin10.0' ]; then
-    export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-  else
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
-  fi
-fi
+#if [ -d ~/.ec2 ]; then
+#  export EC2_HOME=~/.ec2
+#  export EC2_URL=https://ap-southeast-1.ec2.amazonaws.com
+#  export PATH=$PATH:$EC2_HOME/bin
+#  export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
+#  export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
+#  if [ $OSTYPE = 'darwin10.0' ]; then
+#    export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+#  else
+#    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+#  fi
+#fi
 
 # ssh autocomplete hostname from bash histroy
 complete -W "$(echo $(grep '^ssh ' ~/.bash_history | sort -u | sed 's/^ssh //'))" ssh
