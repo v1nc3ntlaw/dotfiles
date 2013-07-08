@@ -52,18 +52,20 @@ alias gst='git stash'
 alias gsp='git smart-pull'
 
 # rails aliases
-alias rake='bundle exec rake'
-alias bexec='bundle exec'
 alias dp='bundle exec cap production deploy'
 alias ds='bundle exec cap staging deploy'
 
+# devops aliases
+alias ec2='knife ec2 server list'
+
 # cmd aliases
-alias ll='ls -l'
+alias ll='ls -lh'
 alias lla='ls -lFa'
 alias la='ls -A'
 alias l='ls -CF'
 alias clr='clear'
 alias fxg='find .|xargs grep'
+alias map='xargs -n1'
 
 export EDITOR=vim
 
