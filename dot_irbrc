@@ -71,23 +71,3 @@ begin
 rescue LoadError => err
   warn "Couldn't load pretty print: #{err}"
 end
-
-begin
-  # load pasteboaRb
-  require 'pasteboaRb'
-rescue LoadError => err
-  warn "Couldn't load pasteboaRb: #{err}"
-  class Object
-    def local_methods
-      (methods - Object.instance_methods).sort
-    end
-
-    def to_pboard(pboard=:general)
-      %x[printf %s "#{self.to_s}" | pbcopy -pboard #{pboard.to_s}]
-      paste pboard
-    end
-
-    alias :to_pb :to_pboard
-
-  end
-end
