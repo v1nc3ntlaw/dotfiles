@@ -8,8 +8,8 @@
   branch = auto
   ui = always
 [push]
-	default = tracking
+  default = tracking
 [web]
-	browser = chrome
+  browser = chrome
 [browser "chrome"]
-	path = /opt/google/chrome/chrome
+  path = /opt/google/chrome/chrome
